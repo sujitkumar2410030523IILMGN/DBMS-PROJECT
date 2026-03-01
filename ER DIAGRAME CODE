@@ -1,0 +1,42 @@
+erDiagram
+
+USER {
+    int user_id
+    string username
+    string email
+    date join_date
+}
+
+MOVIE {
+    int movie_id
+    string title
+    int release_year
+    string director
+}
+
+GENRE {
+    int genre_id
+    string genre_name
+}
+
+RATING {
+    int rating_id
+    int user_id
+    int movie_id
+    float rating
+}
+
+REVIEW {
+    int review_id
+    int user_id
+    int movie_id
+    string review_text
+}
+
+USER ||--o{ RATING : gives
+MOVIE ||--o{ RATING : receives
+
+USER ||--o{ REVIEW : writes
+MOVIE ||--o{ REVIEW : has
+
+MOVIE }o--o{ GENRE : belongs_to
